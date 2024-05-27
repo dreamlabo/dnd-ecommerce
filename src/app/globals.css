@@ -178,6 +178,7 @@
 }
 
 @media (max-width: 700px) {
+
   .hero-wrapper {
     width: calc(100% - 3rem);
   }
@@ -190,6 +191,12 @@
 @media (max-width: 500px) {
   .hero-wrapper {
     width: calc(100% - 2rem);
+  }
+
+  .hero-page-wrapper::before {
+    background: linear-gradient(90deg, rgba(13,11,21,0.95) 0%,
+                                    rgba(13,11,21,0.8) 15%, 
+                                    rgba(13,11,21,0.20) 100%);
   }
 
   .inner-hero {
