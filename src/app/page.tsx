@@ -23,7 +23,7 @@ export default function Home() {
             <div className="inner-hero">
               <h1 className="hero-heading">The Ultimate Outfitter for Epic Quests</h1>
               <p className="hero-subtext">At <span className="italic">The Adventure Guild</span>, we provide top-quality gear, weapons, and expert advice to ensure you and your party are fully prepared for any  adventure.</p>
-              <Link className="hero-btn" href="/">Stock Your Pack</Link>
+              <Link className="hero-btn" href="/shop">Stock Your Pack</Link>
             </div>
           </div>
       </div>
@@ -31,7 +31,7 @@ export default function Home() {
         <h2 className="section-title">Featured Brands</h2>
             <ul className="featured-brands-container">
               <li className="featured-brand-card-container">
-                <a className="featured-brand-card"
+                <Link className="featured-brand-card"
                   href="">
                   <Image 
                   src={WeaponsStore}
@@ -39,10 +39,10 @@ export default function Home() {
                   height={400}
                   width={400}/>
                   <div className="store-name">Battleborn Armory</div>
-                </a>
+                </Link>
               </li>
               <li className="featured-brand-card-container">
-                <a className="featured-brand-card"
+                <Link className="featured-brand-card"
                   href="">
                   <Image 
                   src={MysticThreads}
@@ -50,10 +50,10 @@ export default function Home() {
                   height={400}
                   width={400}/>
                   <div className="store-name">Mystic Threads</div>
-                </a>
+                </Link>
               </li>
-              <li className="featured-brand-card-container" >
-                <a className="featured-brand-card"
+              <li className="featured-brand-card-container">
+                <Link className="featured-brand-card"
                   href="">
                   <Image 
                   src={DragonfireForge}
@@ -61,10 +61,10 @@ export default function Home() {
                   height={400}
                   width={400}/>
                   <div className="store-name">Dragonfire Forge</div>
-                </a>
+                </Link>
               </li>
               <li className="featured-brand-card-container">
-                <a className="featured-brand-card"
+                <Link className="featured-brand-card"
                   href="">
                   <Image 
                   src={EnchantedAttire}
@@ -72,7 +72,7 @@ export default function Home() {
                   height={400}
                   width={400}/>
                   <div className="store-name">Enchanted Attire</div>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
