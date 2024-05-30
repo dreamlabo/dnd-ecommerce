@@ -1,12 +1,11 @@
 import style from '@/app/shop/shop.module.css'
 import ProductCardSmall from '../../components/ProductCardSmall'
 
-import {weaponsData} from "../../../../../fakeData/weaponsData"
+import {weaponsData} from "../../../../fakeData/weaponsData"
 
 export default function ShopCategory({params}) {
 
     const renderCards = weaponsData.map(weapon => {
-        console.log(weapon.productImageUrl)
         return (
             <ProductCardSmall key={weapon.id} 
                 productId={weapon.productId}
@@ -18,7 +17,6 @@ export default function ShopCategory({params}) {
             />
         )
     })
-
 
   return (
     <div className={style.section_wrapper}>

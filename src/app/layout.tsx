@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { cinzel, roboto } from './fonts/fonts';
-
 import Header from "@/components/header/Header"
-
 import "./globals.css";
-
 
 export const metadata: Metadata = {
   title: "Adventure Guild - Home",
@@ -20,9 +17,7 @@ export default function RootLayout({
     <html lang="en" className={`${cinzel.variable} ${roboto.variable}`}>
       <body className="body-background">
       <Header />
-     
         {children}
-      
         </body>
     </html>
   );

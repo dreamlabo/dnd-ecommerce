@@ -14,7 +14,7 @@ type ProductCardSmallProps = {
 
 export default function ProductCardSmall({productName, productDescription, productPrice, productImageUrl, productId, manufacturer}: ProductCardSmallProps) {
   return (
-    <div className={style.product_card_small_wrapper}>
+    <div  className={style.product_card_small_wrapper}>
       {/* card */}
       <div className={style.product_card_small_container}>
         <Image
