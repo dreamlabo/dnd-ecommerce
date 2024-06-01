@@ -4,37 +4,35 @@ import { FaCircleArrowRight } from "react-icons/fa6";
 import Dagger from "../../../../public/weapons/dnd-dagger-1.jpg"
 import style from "../shop.module.css"
 type ProductCardVerticalSmallProps = {
-    productId: string;
+    id: string;
     imageUrl: string;
-    productName: string;
-    productDescription: string;
-    productPrice: number;
-    productType: string;
-    productManufacturer: string;
+    name: string;
+    description: string;
+    price: number;
+    category: string;
+    manufacturer: string;
 }
 
-export default function ProductCardVerticalSmall(props: ProductCardVerticalSmallProps ) {
+export default function ProductCardVerticalSmall({id, imageUrl, name, description, price, category}: ProductCardVerticalSmallProps ) {
   return (
-   
         <div className={style.vertical_product_card}>
             <Image
-            src={Dagger}
+            src={imageUrl}
             alt=""
             height={300}
             width={300}/>
             <div className={style.vertical_product_card__info_wrapper}>
-                <h3 className={style.vertical_product_card__name}>Shadowstrike Dagger</h3>
-                <p className={style.vertical_product_card__description}>A sleek and deadly weapon, perfect for rogues and assassins.</p>
+                <h3 className={style.vertical_product_card__name}>{name}</h3>
+                <p className={style.vertical_product_card__description}>{description}</p>
                 <div  className={style.vertical_product_card__bottom} >
-                    <span className={style.vertical_product_card__price} >750gp</span>
+                    <span className={style.vertical_product_card__price} >{price}gp</span>
                     <Link
                         className={style.vertical_product_card__link}
-                        href="">
+                        href={`/shop/category/${category}/${id}`}>
                         <FaCircleArrowRight />
                     </Link>
                 </div>
             </div>
-        </div>
-   
+        </div> 
   )
 }

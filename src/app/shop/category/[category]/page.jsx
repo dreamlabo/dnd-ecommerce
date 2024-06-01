@@ -1,19 +1,21 @@
 import style from '@/app/shop/shop.module.css'
 import ProductCardSmall from '../../components/ProductCardSmall'
 
-import {weaponsData} from "../../../../fakeData/weaponsData"
+import {getProductsByType} from "../../../../fakeData/helperFunctions/helperFunctions"
 
 export default function ShopCategory({params}) {
+    const productsToDisplay =  getProductsByType(params.category);
+    console.log(params.category)
 
-    const renderCards = weaponsData.map(weapon => {
+    const renderCards = productsToDisplay.map(product => {
         return (
-            <ProductCardSmall key={weapon.id} 
-                productId={weapon.productId}
-                productName={weapon.productName}
-                productDescription={weapon.productDescription}
-                productImageUrl={weapon.productImageUrl}
-                productPrice={weapon.productPrice}
-                manufacturer={weapon.manufacturer}
+            <ProductCardSmall key={product.id} 
+                productId={product.productId}
+                productName={product.productName}
+                productDescription={product.productDescription}
+                productImageUrl={product.productImageUrl}
+                productPrice={product.productPrice}
+                manufacturer={product.manufacturer}
             />
         )
     })
@@ -22,7 +24,7 @@ export default function ShopCategory({params}) {
     <div className={style.section_wrapper}>
         <section className={style.section_container}>
             <div className={style.heading_container}>
-                <h1>Weapons</h1>
+                <h1>{params.category}</h1>
             </div>
             <div className={style.product_cards_small__wrapper}>
                 {renderCards}

@@ -14,9 +14,9 @@ type ProductCardSmallProps = {
 
 export default function ProductCardSmall({productName, productDescription, productPrice, productImageUrl, productId, manufacturer}: ProductCardSmallProps) {
   return (
-    <div  className={style.product_card_small_wrapper}>
+    <div key={productName} className={style.product_card_small_wrapper}>
       {/* card */}
-      <div className={style.product_card_small_container}>
+      <div  className={style.product_card_small_container}>
         <Image
         className={style.product_image}
         src={productImageUrl}
@@ -27,7 +27,7 @@ export default function ProductCardSmall({productName, productDescription, produ
         <div className={style.card_small__text_container}>
           <div>
             <h2 className={style.card_small__title}>{productName}</h2>
-            <span className={style.small_card__manufacturer}>by Dragonfire Forge</span>
+            <span className={style.small_card__manufacturer}>by {manufacturer}</span>
           </div>
 
           <p className={style.card_small__description}>{productDescription}</p>
