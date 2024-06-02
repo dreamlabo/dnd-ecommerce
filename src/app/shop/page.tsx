@@ -11,7 +11,7 @@ export default function Shop() {
             </div>
             <div className={style.cards_container}>
                 
-                <Link className={style.card_container} href="/shop/category/weapons">
+                <Link className={style.card_container} href="/shop/weapons">
                     <Image  className={style.image}
                     src={Weapons}
                     alt="" 
@@ -21,7 +21,7 @@ export default function Shop() {
                 </Link>
 
                 <Link 
-                href="/shop/category/equipment"
+                href="/shop/equipment"
                 className={style.card_container}>
                     <Image  className={style.image}
                     src={Weapons}

@@ -3,7 +3,7 @@ const WEAPON_CATEGORY = "weapons"
 export const productsData = [
     {
         productId: "1",
-        quantity: 6,
+        quantityInStock: 25,
         category: WEAPON_CATEGORY,
         subCategories: [],
         type: "sword",
@@ -28,7 +28,7 @@ export const productsData = [
     },
     {
         productId: "2",
-        quantity: 3,
+        quantityInStock: 1,
         category: WEAPON_CATEGORY,
         subCategories: [],
         type: "dagger",
@@ -50,7 +50,7 @@ export const productsData = [
     },
     {
         productId: "3",
-        quantity: 10,
+        quantityInStock: 10,
         category: WEAPON_CATEGORY,
         subCategories: [],
         type: "crossbow",
@@ -72,7 +72,7 @@ export const productsData = [
     },
     {
         productId: "4",
-        quantity: 12,
+        quantityInStock: 12,
         category: WEAPON_CATEGORY,
         subCategories: [],
         type: "hand axe",
@@ -93,7 +93,7 @@ export const productsData = [
     },
     {
         productId: "5",
-        quantity: 3,
+        quantityInStock: 3,
         category: WEAPON_CATEGORY,
         subCategories: [],
         type: "longbow",
@@ -113,7 +113,7 @@ export const productsData = [
     },
     {
         productId: "6",
-        quantity: 5,
+        quantityInStock: 5,
         category: EQUIPMENT_CATEGORY,
         subCategories: [],
         type: "lantern",
@@ -134,12 +134,12 @@ export const productsData = [
     },
     {
         productId: "7",
-        quantity: 5,
+        quantityInStock: 5,
         category: EQUIPMENT_CATEGORY,
         subCategories: [],
         type: "lantern",
         subTypes: [""],
-        productName: "Radiant Dawn Lantern",
+        productName: "Twilight Guardian Lantern",
         productDescription: "Designed for adventurers who require dependable light in the darkest and most dangerous places.",
         productFullDescription: "The Twilight Guardian Lantern is a premium illumination device designed for adventurers who require dependable light in the darkest and most dangerous places. Crafted from high-quality materials and imbued with protective enchantments, this lantern not only lights your way but also offers magical protection against the creatures of the night. Ideal for explorers, dungeon delvers, and nighttime scouts, the Twilight Guardian Lantern is your faithful companion in the shadows.",
         productDetails: [
@@ -156,7 +156,7 @@ export const productsData = [
     },
     {
         productId: "8",
-        quantity: 2,
+        quantityInStock: 2,
         category: EQUIPMENT_CATEGORY,
         subCategories: [],
         type: "lantern",
@@ -175,7 +175,7 @@ export const productsData = [
     },
     {
         productId: "9",
-        quantity: 1,
+        quantityInStock: 1,
         category: EQUIPMENT_CATEGORY,
         subCategories: [],
         type: "lantern",
@@ -194,7 +194,7 @@ export const productsData = [
     },
     {
         productId: "10",
-        quantity: 1,
+        quantityInStock: 1,
         category: EQUIPMENT_CATEGORY,
         subCategories: [],
         type: "backpack",
@@ -214,7 +214,7 @@ export const productsData = [
     },
     {
         productId: "11",
-        quantity: 1,
+        quantityInStock: 0,
         category: EQUIPMENT_CATEGORY,
         subCategories: [],
         type: "backpack",

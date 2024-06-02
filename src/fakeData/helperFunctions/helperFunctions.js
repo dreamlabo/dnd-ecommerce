@@ -16,9 +16,7 @@ export function getProductsByManufacturer(manufacturedBy, id) {
 }
 
 export function getProductsByType(productCategory) {
-    console.log(productCategory)
     const productsByType = productsData.filter(product => (
-        console.log(product.category),
         product.category === productCategory
     ));
 

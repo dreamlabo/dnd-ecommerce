@@ -28,7 +28,7 @@ export default function ProductCardVerticalSmall({id, imageUrl, name, descriptio
                     <span className={style.vertical_product_card__price} >{price}gp</span>
                     <Link
                         className={style.vertical_product_card__link}
-                        href={`/shop/category/${category}/${id}`}>
+                        href={`/shop/${category}/${id}`}>
                         <FaCircleArrowRight />
                     </Link>
                 </div>

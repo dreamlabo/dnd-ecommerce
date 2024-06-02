@@ -1,7 +1,8 @@
 import style from '@/app/shop/shop.module.css'
-import ProductCardSmall from '../../components/ProductCardSmall'
+import Link from 'next/link';
+import ProductCardSmall from '../components/ProductCardSmall'
 
-import {getProductsByType} from "../../../../fakeData/helperFunctions/helperFunctions"
+import {getProductsByType} from "../../../fakeData/helperFunctions/helperFunctions"
 
 export default function ShopCategory({params}) {
     const productsToDisplay =  getProductsByType(params.category);
@@ -23,6 +24,11 @@ export default function ShopCategory({params}) {
   return (
     <div className={style.section_wrapper}>
         <section className={style.section_container}>
+            <nav>
+                <ul className={style.breadcrumbContainer}>
+                    <li><Link className={style.breadcrumb_link}href="/shop">Shop</Link></li>
+                </ul>
+            </nav>
             <div className={style.heading_container}>
                 <h1>{params.category}</h1>
             </div>

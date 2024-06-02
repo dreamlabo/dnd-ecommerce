@@ -34,7 +34,7 @@ export default function ProductCardSmall({productName, productDescription, produ
           <div className={style.card_small__btm_container}>
             <span className={style.card_small__price}>{productPrice?.toLocaleString()} gp</span>
             <Link className={style.card_small__link_wrapper}
-              href={`/shop/category/weapons/${productId}`}>
+              href={`/shop/weapons/${productId}`}>
                 <span>More Info</span>
                 <div className={style.card_small__icon}>
                 <FaCircleArrowRight />

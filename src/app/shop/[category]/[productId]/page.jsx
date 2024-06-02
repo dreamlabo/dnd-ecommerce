@@ -1,11 +1,13 @@
 import Image from "next/image";
-import style from '../../../shop.module.css';
+import Link from "next/link";
+import style from '../../shop.module.css';
 import ProductCardVerticalSmall from "@/app/shop/components/ProductCardVerticalSmall";
-import {getProductById} from '../../../../../fakeData/helperFunctions/helperFunctions'
-import {getProductsByManufacturer} from '../../../../../fakeData/helperFunctions/helperFunctions'
+import {getProductById} from '../../../../fakeData/helperFunctions/helperFunctions'
+import {getProductsByManufacturer} from '../../../../fakeData/helperFunctions/helperFunctions'
 import ProductPurchaseCard from "@/app/shop/components/ProductPurchaseCard";
 
 export default function ProductPage({params}) {
+   
 
     const product = getProductById(params.productId);
     const productsByManufacturer = getProductsByManufacturer(product.manufacturer, product.productId);
@@ -33,7 +35,15 @@ export default function ProductPage({params}) {
 
   return (
     <main className={style.section_container}>
+            <nav>
+                <ul className={style.breadcrumbContainer}>
+                    <li className={style.list_item}><Link className={style.breadcrumb_link} href="/shop"><span>Shop</span></Link></li>
+                    <li className={style.list_item}><Link className={style.breadcrumb_link}href={`/shop/${product.category}`}>{product.category}</Link></li>
+                    {/* <li className={style.list_item}>{product.productName}</li> */}
+                </ul>
+            </nav>
         <section className={style.two_col_grid}>
+
         <div className={style.product_title_container__mobile}>
                     <span className={style.product_manufacturer}>{product.manufacturer}</span>
                     <h1 className={style.product_name}>{product.productName}</h1>
@@ -41,9 +51,10 @@ export default function ProductPage({params}) {
             <div className={style.product_image_container}>
                 <Image className={style.product_image}
                 src={product.productImageUrl}
-                alt=""
+                alt={product.productName}
                 height={350}
-                width={350}/>
+                width={350}
+                priority={true}/>
             </div>
             <div className={style.inner_grid}>
                 <div className={style.product_title_container}>
@@ -62,7 +73,7 @@ export default function ProductPage({params}) {
                     </ul>
                 </div>
                 <ProductPurchaseCard price={product.productPrice}
-                                quantity={product.quantity}/>
+                                quantityInStock={product.quantityInStock}/>
             </div>
         </section>
         <section className="py-12">
