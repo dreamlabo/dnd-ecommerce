@@ -14,9 +14,9 @@ type ProductCardSmallProps = {
 
 export default function ProductCardSmall({productName, productDescription, productPrice, productImageUrl, productId, manufacturer}: ProductCardSmallProps) {
   return (
-    <div key={productName} className={style.product_card_small_wrapper}>
+    <li key={productName} className={style.product_card_small_wrapper}>
       {/* card */}
-      <div  className={style.product_card_small_container}>
+      <article aria-labelledby={`product-${productId}`} aria-describedby={`product-${productName}-description`} className={style.product_card_small_container}>
         <Image
         className={style.product_image}
         src={productImageUrl}
@@ -26,11 +26,11 @@ export default function ProductCardSmall({productName, productDescription, produ
 
         <div className={style.card_small__text_container}>
           <div>
-            <h2 className={style.card_small__title}>{productName}</h2>
+            <h2 id={`product-${productId}`} className={style.card_small__title}>{productName}</h2>
             <span className={style.small_card__manufacturer}>by {manufacturer}</span>
           </div>
 
-          <p className={style.card_small__description}>{productDescription}</p>
+          <p id={`product-${productName}-description`} className={style.card_small__description}>{productDescription}</p>
           <div className={style.card_small__btm_container}>
             <span className={style.card_small__price}>{productPrice?.toLocaleString()} gp</span>
             <Link className={style.card_small__link_wrapper}
@@ -42,7 +42,7 @@ export default function ProductCardSmall({productName, productDescription, produ
             </Link>
           </div>
         </div>
-      </div>
-    </div>
+      </article>
+    </li>
   )
 }

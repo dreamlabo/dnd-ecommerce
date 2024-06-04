@@ -25,16 +25,16 @@ export default function ShopCategory({params}) {
     <div className={style.section_wrapper}>
         <section className={style.section_container}>
             <nav>
-                <ul className={style.breadcrumbContainer}>
+                <ol className={style.breadcrumbContainer}>
                     <li><Link className={style.breadcrumb_link}href="/shop">Shop</Link></li>
-                </ul>
+                </ol>
             </nav>
             <div className={style.heading_container}>
                 <h1>{params.category}</h1>
             </div>
-            <div className={style.product_cards_small__wrapper}>
+            <ul className={style.product_cards_small__wrapper}>
                 {renderCards}
-            </div>
+            </ul>
         </section>
     </div>
   )

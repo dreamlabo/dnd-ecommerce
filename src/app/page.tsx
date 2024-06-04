@@ -18,6 +18,7 @@ export default function Home() {
             alt=''
             height={600}
             width={2000}
+            priority={true}
           />
           <div className="hero-wrapper">
             <div className="inner-hero">

@@ -7,9 +7,10 @@ import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 type ProductPurchaseCardProps = {
     price: number;
     quantityInStock: number;
+    handleAddToCart: () => void;
 }
 
-export default function ProductPurchaseCard({price, quantityInStock} : ProductPurchaseCardProps) {
+export default function ProductPurchaseCard({price, quantityInStock, handleAddToCart } : ProductPurchaseCardProps) {
     const MAX_SELECT_ELEMENTS = 20;
   
     const [purchaseQuantity, setPurchaseQuantity] = useState(1);
@@ -39,7 +40,6 @@ export default function ProductPurchaseCard({price, quantityInStock} : ProductPu
         return options;
     }
     
-
     const renderInStock = () => {
         if (quantityInStock === 0) {
             return (
@@ -93,7 +93,7 @@ export default function ProductPurchaseCard({price, quantityInStock} : ProductPu
                             </div>
                         </div>
                         <div className="pt-4">
-                            <button className={style.product_add_to_cart_btn}>Add to Cart</button>
+                            <button onClick={handleAddToCart} className={style.product_add_to_cart_btn}>Add to Cart</button>
                             <button className={style.product_add_to_wish_list_btn}>Add to Wish List</button>
                         </div>
                     </div>

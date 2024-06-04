@@ -1,3 +1,5 @@
+'use client'
+import { use, useState } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import style from '../../shop.module.css';
@@ -5,8 +7,11 @@ import ProductCardVerticalSmall from "@/app/shop/components/ProductCardVerticalS
 import {getProductById} from '../../../../fakeData/helperFunctions/helperFunctions'
 import {getProductsByManufacturer} from '../../../../fakeData/helperFunctions/helperFunctions'
 import ProductPurchaseCard from "@/app/shop/components/ProductPurchaseCard";
+import CartModal from "../../components/CartModal";
 
 export default function ProductPage({params}) {
+
+    const [isCartModalOpen, setIsCartModalOpen] = useState(false);
    
 
     const product = getProductById(params.productId);
@@ -33,18 +38,25 @@ export default function ProductPage({params}) {
         })
     }
 
+    const handleAddToCart = () => {
+        setIsCartModalOpen(true);
+    }
+
+    const handleCloseModal = () => {
+        setIsCartModalOpen(false);
+    }
+
   return (
     <main className={style.section_container}>
             <nav>
-                <ul className={style.breadcrumbContainer}>
+                <ol className={style.breadcrumbContainer}>
                     <li className={style.list_item}><Link className={style.breadcrumb_link} href="/shop"><span>Shop</span></Link></li>
                     <li className={style.list_item}><Link className={style.breadcrumb_link}href={`/shop/${product.category}`}>{product.category}</Link></li>
                     {/* <li className={style.list_item}>{product.productName}</li> */}
-                </ul>
+                </ol>
             </nav>
         <section className={style.two_col_grid}>
-
-        <div className={style.product_title_container__mobile}>
+            <div className={style.product_title_container__mobile}>
                     <span className={style.product_manufacturer}>{product.manufacturer}</span>
                     <h1 className={style.product_name}>{product.productName}</h1>
                 </div>
@@ -73,15 +85,19 @@ export default function ProductPage({params}) {
                     </ul>
                 </div>
                 <ProductPurchaseCard price={product.productPrice}
-                                quantityInStock={product.quantityInStock}/>
+                                quantityInStock={product.quantityInStock}
+                                handleAddToCart={handleAddToCart}/>
             </div>
         </section>
         <section className="py-12">
             <h2 className={style.more_items_by__title}><span>More Items by </span><span className={style.more_items_by__manufacturer}>{product.manufacturer}</span></h2>
-            <div className={style.more_items_by__cards_container}>
+            <ul className={style.more_items_by__cards_container}>
                 {renderProductCardsVerticalSmall()}
-            </div>
+            </ul>
         </section>
+        <CartModal isOpen={isCartModalOpen}
+                     handleCloseModal={handleCloseModal} />
+     
     </main>
   )
 }
