@@ -1,5 +1,5 @@
 'use client'
-import { use, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import style from '../../shop.module.css';
@@ -10,7 +10,9 @@ import ProductPurchaseCard from "@/app/shop/components/ProductPurchaseCard";
 import CartModal from "../../components/CartModal";
 
 export default function ProductPage({params}) {
-
+    
+    const pageElementRef = useRef(null);
+    const bodyElementRef = useRef(null);
     const [isCartModalOpen, setIsCartModalOpen] = useState(false);
    
 
@@ -27,7 +29,7 @@ export default function ProductPage({params}) {
 
     const renderProductCardsVerticalSmall = () => {
         return productsByManufacturer.map((product) => {
-            return (<ProductCardVerticalSmall key={product.name} 
+            return (<ProductCardVerticalSmall key={product.productImageUrl} 
                         id={product.productId}
                         imageUrl={product.productImageUrl}
                         name={product.productName}
@@ -40,14 +42,22 @@ export default function ProductPage({params}) {
 
     const handleAddToCart = () => {
         setIsCartModalOpen(true);
+        bodyElementRef.current.classList.add("no_scroll_on_overlay")
     }
 
     const handleCloseModal = () => {
         setIsCartModalOpen(false);
+        bodyElementRef.current.classList.remove("no_scroll_on_overlay")
     }
 
+    useEffect(() => {
+        if(pageElementRef.current) {
+            bodyElementRef.current = pageElementRef.current.closest(".body-background ")
+        }
+    })
+
   return (
-    <main className={style.section_container}>
+    <main  ref={pageElementRef} className={style.section_container}>
             <nav>
                 <ol className={style.breadcrumbContainer}>
                     <li className={style.list_item}><Link className={style.breadcrumb_link} href="/shop"><span>Shop</span></Link></li>

@@ -10,7 +10,7 @@ export default function ShopCategory({params}) {
 
     const renderCards = productsToDisplay.map(product => {
         return (
-            <ProductCardSmall key={product.id} 
+            <ProductCardSmall key={product.id + "_" + product.name} 
                 productId={product.productId}
                 productName={product.productName}
                 productDescription={product.productDescription}

@@ -14,7 +14,7 @@ type ProductCardSmallProps = {
 
 export default function ProductCardSmall({productName, productDescription, productPrice, productImageUrl, productId, manufacturer}: ProductCardSmallProps) {
   return (
-    <li key={productName} className={style.product_card_small_wrapper}>
+    <li className={style.product_card_small_wrapper}>
       {/* card */}
       <article aria-labelledby={`product-${productId}`} aria-describedby={`product-${productName}-description`} className={style.product_card_small_container}>
         <Image

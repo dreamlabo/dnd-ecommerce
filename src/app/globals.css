@@ -33,7 +33,11 @@
 
 .body-background {
   background: var(--clr-main-background);
-  overflow-y: hidden;
+  
+}
+
+.no_scroll_on_overlay {
+  overflow: hidden;
 }
 
 .hero-page-wrapper {

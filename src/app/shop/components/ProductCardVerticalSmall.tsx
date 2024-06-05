@@ -17,7 +17,7 @@ type ProductCardVerticalSmallProps = {
 
 export default function ProductCardVerticalSmall({id, imageUrl, name, description, price, category}: ProductCardVerticalSmallProps ) {
   return (
-        <li className={style.vertical_product_card}>
+        <li  className={style.vertical_product_card}>
             <article aria-labelledby={`product-${id}`} aria-describedby={`product-${name}-description`} >
                 <Image
                     src={imageUrl}
