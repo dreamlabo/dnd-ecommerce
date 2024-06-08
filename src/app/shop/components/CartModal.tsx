@@ -18,6 +18,14 @@ export default function CartModal({isOpen, handleCloseModal}: CartModalProps) {
     // }
 
     const [reRender, setReRender] = useState(false)
+    const removeFromCart = (id: string) => {
+        const indexToRemove = userCart.findIndex(item => item.productId === id)
+        
+        if(indexToRemove !== -1) {
+            userCart.splice(indexToRemove, 1);
+            setReRender(!reRender)
+        }
+    }
 
     const handleCartItemQuantityUpdate = (itemId: string,  updatedQuantity: number ) => {
         userCart.map(item => {
@@ -31,6 +39,7 @@ export default function CartModal({isOpen, handleCloseModal}: CartModalProps) {
     }
 
     const renderCartProductCards = () => {
+        userCart.sort((first, second) => second.dateAddedToCart - first.dateAddedToCart)
         return userCart.map(product => {
             return (
                 <CartProductCard  key={product.productId}
@@ -41,6 +50,7 @@ export default function CartModal({isOpen, handleCloseModal}: CartModalProps) {
                     price={product.productPrice}
                     manufacturer={product.manufacturer}
                     updateItemQuantity={handleCartItemQuantityUpdate}
+                    removeFromCart={removeFromCart}
                 />
             )
         })

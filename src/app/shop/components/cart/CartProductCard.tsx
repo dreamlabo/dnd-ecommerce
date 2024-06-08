@@ -9,12 +9,13 @@ type CartProductCardProps = {
     manufacturer: string,
     price: number;
     quantity: number;
-    updateItemQuantity: (id: string, updatedQuantity: number) => void
+    updateItemQuantity: (id: string, updatedQuantity: number) => void,
+    removeFromCart: (id: string) => void,
 }
 
-export default function CartProductCard({id, imageUrl, name, manufacturer, price, quantity, updateItemQuantity } : CartProductCardProps) {
+export default function CartProductCard({id, imageUrl, name, manufacturer, price, quantity, updateItemQuantity, removeFromCart } : CartProductCardProps) {
   const [purchaseQuantity, setPurchaseQuantity] = useState(quantity);
-  
+
   const updateQuantity = (event: React.FormEvent<HTMLSelectElement>) => {
         event.preventDefault();
         setPurchaseQuantity(parseInt(event.currentTarget.value));
@@ -34,7 +35,7 @@ export default function CartProductCard({id, imageUrl, name, manufacturer, price
                                 <span className="cart_company">{manufacturer}</span>
                                 <h2 className="cart_Product__name">{name}</h2>
                             </div>
-                            <button className="cart_btn__remove">Remove</button>   
+                            <button onClick={() => {removeFromCart(id)}} className="cart_btn__remove">Remove</button>   
                         </div>
                         <div className="cart_product_bottom_container">
                             <div>
