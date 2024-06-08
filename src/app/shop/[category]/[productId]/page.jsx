@@ -9,15 +9,19 @@ import {getProductsByManufacturer} from '../../../../fakeData/helperFunctions/he
 import ProductPurchaseCard from "@/app/shop/components/ProductPurchaseCard";
 import CartModal from "../../components/CartModal";
 
+import {userCart} from "../../../../fakeData/userData/userData";
+
 export default function ProductPage({params}) {
     
     const pageElementRef = useRef(null);
     const bodyElementRef = useRef(null);
     const [isCartModalOpen, setIsCartModalOpen] = useState(false);
    
+    
+   
 
     const product = getProductById(params.productId);
-    const productsByManufacturer = getProductsByManufacturer(product.manufacturer, product.productId);
+    const productsByManufacturer = getProductsByManufacturer(product?.manufacturer, product?.productId);
     console.log(productsByManufacturer.length);
 
     const renderFeatures = () => {
@@ -40,7 +44,27 @@ export default function ProductPage({params}) {
         })
     }
 
-    const handleAddToCart = () => {
+    const handleAddToCart = (quantity) => {
+        const cartItemIndex = userCart.findIndex(item => item.productId === product.productId)
+
+        if(cartItemIndex >= 0) {
+            const items = userCart[cartItemIndex].quantityInCart
+            userCart[cartItemIndex] = {...userCart[cartItemIndex], quantityInCart: (items +  quantity), dateAddedToCart: new Date()}
+            console.log(userCart)
+        }
+        else {
+            const newCartItem = {
+                productId: product?.productId,
+                productName: product?.productName,
+                imageUrl: product?.productImageUrl,
+                quantityInCart: quantity,
+                productPrice: product?.productPrice,
+                manufacturer: product?.manufacturer,
+                dateAddedToCart: new Date(),
+            }
+            userCart.push(newCartItem);
+        }
+  
         setIsCartModalOpen(true);
         bodyElementRef.current.classList.add("no_scroll_on_overlay")
     }
@@ -54,21 +78,21 @@ export default function ProductPage({params}) {
         if(pageElementRef.current) {
             bodyElementRef.current = pageElementRef.current.closest(".body-background ")
         }
-    })
+    },[])
 
   return (
     <main  ref={pageElementRef} className={style.section_container}>
             <nav>
                 <ol className={style.breadcrumbContainer}>
                     <li className={style.list_item}><Link className={style.breadcrumb_link} href="/shop"><span>Shop</span></Link></li>
-                    <li className={style.list_item}><Link className={style.breadcrumb_link}href={`/shop/${product.category}`}>{product.category}</Link></li>
+                    <li className={style.list_item}><Link className={style.breadcrumb_link}href={`/shop/${product?.category}`}>{product?.category}</Link></li>
                     {/* <li className={style.list_item}>{product.productName}</li> */}
                 </ol>
             </nav>
         <section className={style.two_col_grid}>
             <div className={style.product_title_container__mobile}>
-                    <span className={style.product_manufacturer}>{product.manufacturer}</span>
-                    <h1 className={style.product_name}>{product.productName}</h1>
+                    <span className={style.product_manufacturer}>{product?.manufacturer}</span>
+                    <h1 className={style.product_name}>{product?.productName}</h1>
                 </div>
             <div className={style.product_image_container}>
                 <Image className={style.product_image}
@@ -105,8 +129,9 @@ export default function ProductPage({params}) {
                 {renderProductCardsVerticalSmall()}
             </ul>
         </section>
-        <CartModal isOpen={isCartModalOpen}
-                     handleCloseModal={handleCloseModal} />
+        {isCartModalOpen && <CartModal isOpen={isCartModalOpen}
+                     handleCloseModal={handleCloseModal} />}
+       
      
     </main>
   )

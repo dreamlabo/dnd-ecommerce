@@ -104,7 +104,7 @@ export const productsData = [
         productDetails: [
             "Enhanced Precision: Grants a +2 bonus to attack rolls, ensuring highly accurate shots over long distances.",
             "Silent Arrows: Designed to shoot arrows silently, perfect for stealthy operations and undetected strikes.",
-            "Lightweight and Durable: Crafted from fine yew wood and reinforced with elven silver, offering a perfect balance of strength and agility.",
+            "Lightweight and Durable: Crafted from fine yew wood and reinforced with Elven silver, offering a perfect balance of strength and agility.",
             "Ancient Enchantments: Bowstring hums with latent magic, giving each arrow a smooth and effortless flight."
         ],
         productPrice: 925,

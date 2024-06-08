@@ -7,7 +7,7 @@ import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 type ProductPurchaseCardProps = {
     price: number;
     quantityInStock: number;
-    handleAddToCart: () => void;
+    handleAddToCart: (quantity: number) => void;
 }
 
 export default function ProductPurchaseCard({price, quantityInStock, handleAddToCart } : ProductPurchaseCardProps) {
@@ -21,7 +21,7 @@ export default function ProductPurchaseCard({price, quantityInStock, handleAddTo
     const handleSelectOnChange = (event: React.FormEvent<HTMLSelectElement>) => {
         event.preventDefault();
         setPurchaseQuantity(parseInt(event.currentTarget.value))
-    }
+    } 
 
     const renderSubTotal = () => {
             return (purchaseQuantity * price).toLocaleString();
@@ -93,7 +93,7 @@ export default function ProductPurchaseCard({price, quantityInStock, handleAddTo
                             </div>
                         </div>
                         <div className="pt-4">
-                            <button onClick={handleAddToCart} className={style.product_add_to_cart_btn}>Add to Cart</button>
+                            <button onClick={() => {handleAddToCart(purchaseQuantity)}} className={style.product_add_to_cart_btn}>Add to Cart</button>
                             <button className={style.product_add_to_wish_list_btn}>Add to Wish List</button>
                         </div>
                     </div>

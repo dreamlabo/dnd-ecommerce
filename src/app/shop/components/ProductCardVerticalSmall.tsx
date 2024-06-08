@@ -5,6 +5,8 @@ import Dagger from "../../../../public/weapons/dnd-dagger-1.jpg"
 import style from "../shop.module.css"
 
 
+
+
 type ProductCardVerticalSmallProps = {
     id: string;
     imageUrl: string;
