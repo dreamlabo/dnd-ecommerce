@@ -17,13 +17,19 @@ export default function CartModal({isOpen, handleCloseModal}: CartModalProps) {
     //     return null;
     // }
 
-    const [reRender, setReRender] = useState(false)
+    const [reRender, setReRender] = useState(false);
+    const [isCartEmpty, setIsCartEmpty] = useState(false)
     const removeFromCart = (id: string) => {
         const indexToRemove = userCart.findIndex(item => item.productId === id)
         
         if(indexToRemove !== -1) {
             userCart.splice(indexToRemove, 1);
-            setReRender(!reRender)
+            setReRender(!reRender)  
+        }
+
+        if (userCart.length < 1) {
+            // handleCloseModal();
+            setIsCartEmpty(true);
         }
     }
 
@@ -61,7 +67,9 @@ export default function CartModal({isOpen, handleCloseModal}: CartModalProps) {
             totalItems + item.quantityInCart, 0
         )
 
-        if(totalItemsInCart < 1) return null
+        if(totalItemsInCart === 0) {
+            return "Your Cart"
+        }
 
         if(totalItemsInCart === 1) {
             return `${totalItemsInCart} item`;
@@ -78,26 +86,44 @@ export default function CartModal({isOpen, handleCloseModal}: CartModalProps) {
     return (
         <>
             <div onClick={handleCloseModal} className="modal_overlay"></div>
-                <div role="dialog" aria-modal="true" className="modal-wrapper">
-                    <div className="modal_container">
+            <div role="dialog" aria-modal="true" className="modal-wrapper">
+                {isCartEmpty ? 
+                    (
+                        <div className="modal_container">
+                            <div className="flex justify-between items-center cart_top_container">
+                                <span className="cart_header__items" >{renderItemAmount()}</span>
+                                <button onClick={handleCloseModal} className="modal_btn__close"><IoCloseOutline /></button>
+                            </div>
+                            <div className="modal_container__cart_empty">
+                                <p >Your cart is empty</p>
+                                <button>Continue Shopping</button>
+                            </div>
+                          
+                        </div>
+                    )
+                    : 
+                    (<div className="modal_container">
                         <div className="flex justify-between items-center cart_top_container">
                             <span className="cart_header__items" >{renderItemAmount()}</span>
                             <button onClick={handleCloseModal} className="modal_btn__close"><IoCloseOutline /></button>
                         </div>
+        
                         <div className="cart_products_container">
                             {renderCartProductCards()}
                         </div>
                         <div className="cart_bottom_wrapper">
-                        <div className="w-full">
-                            <p className="cart_bottom_subtotal__container" >
-                                <span>Subtotal</span>
-                                <span>{getSubtotalOfItems()} gp</span>
-                            </p>
-                            <Link className="cart_btn__checkout" href="/">Checkout</Link>
+                            <div className="w-full">
+                                <p className="cart_bottom_subtotal__container" >
+                                    <span>Subtotal</span>
+                                    <span>{getSubtotalOfItems()} gp</span>
+                                </p>
+                                <Link className="cart_btn__checkout" href="/">Checkout</Link>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                    )
+                }  
+            </div>   
         </>
     )
 }
