@@ -387,7 +387,6 @@
 }
 
 /* Cart Modal */
-
 .modal_overlay {
   position: absolute;
   inset: 0;
@@ -406,6 +405,22 @@
   transition: width 400ms ease-in-out;
   padding: 1rem 1rem 1rem 1rem;
   z-index: 1000;
+  transform: translateX(50%);
+  /* transition: right 1s ease-in-out; */
+  animation: animateModal 300ms ease-in-out forwards;
+}
+
+@keyframes animateModal {
+  from {
+    transform: translateX(100%)
+  }
+  to {
+    transform: translateX(0%)
+  }
+}
+
+.modal-wrapper.modal-wrapper-open {
+  right: 0;
 }
 
 .modal_container {
@@ -416,7 +431,6 @@
 }
 
 .modal_container__cart_empty {
-
   flex: 1 1 auto; 
   position: relative;
   overflow: auto;
@@ -472,6 +486,7 @@
 .cart_product_card {
   display: flex;
   column-gap: 1rem;
+  border-radius: 5px;
   padding: 0.5rem;
   width: 100%;
   background: #2A2444;
@@ -542,6 +557,7 @@
   max-width: 125px;
   height: 125px;
   object-fit: cover;
+  border-radius: 5px;
 }
 
 .cart_products_container {

@@ -86,7 +86,7 @@ export default function CartModal({isOpen, handleCloseModal}: CartModalProps) {
     return (
         <>
             <div onClick={handleCloseModal} className="modal_overlay"></div>
-            <div role="dialog" aria-modal="true" className="modal-wrapper">
+            <div role="dialog" aria-modal="true" className={"modal-wrapper" }>
                 {isCartEmpty ? 
                     (
                         <div className="modal_container">
@@ -96,7 +96,7 @@ export default function CartModal({isOpen, handleCloseModal}: CartModalProps) {
                             </div>
                             <div className="modal_container__cart_empty">
                                 <p >Your cart is empty</p>
-                                <button>Continue Shopping</button>
+                                <button onClick={handleCloseModal}>Continue Shopping</button>
                             </div>
                           
                         </div>

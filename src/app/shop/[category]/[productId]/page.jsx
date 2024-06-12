@@ -96,8 +96,8 @@ export default function ProductPage({params}) {
                 </div>
             <div className={style.product_image_container}>
                 <Image className={style.product_image}
-                src={product.productImageUrl}
-                alt={product.productName}
+                src={product?.productImageUrl}
+                alt={product?.productName}
                 height={350}
                 width={350}
                 priority={true}/>
@@ -109,7 +109,7 @@ export default function ProductPage({params}) {
                 </div>
                 <div className={style.prod_description_section}>
                     <p className={style.product_description}>
-                        {product.productFullDescription}
+                        {product?.productFullDescription}
                     </p>
                 </div>
                 <div className={style.prod_features_section}>
@@ -118,8 +118,8 @@ export default function ProductPage({params}) {
                         {renderFeatures()}
                     </ul>
                 </div>
-                <ProductPurchaseCard price={product.productPrice}
-                                quantityInStock={product.quantityInStock}
+                <ProductPurchaseCard price={product?.productPrice}
+                                quantityInStock={product?.quantityInStock}
                                 handleAddToCart={handleAddToCart}/>
             </div>
         </section>
