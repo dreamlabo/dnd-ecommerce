@@ -19,10 +19,13 @@
   --clr-accent-red: #742F2C;
   /* --clr-light-100: #FBE7C3; */
   --clr-light-100: #e7d1aa;
+  --clr-light-200: #e2dfdc;
   --clr-search-background: #161223;
 
   --background-overlay: #0D0B15;
   --max-width-page: 1700px;
+
+  --border-radius: 5px;
 }
 
 .page-wrapper {

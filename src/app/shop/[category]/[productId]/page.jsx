@@ -17,9 +17,6 @@ export default function ProductPage({params}) {
     const bodyElementRef = useRef(null);
     const [isCartModalOpen, setIsCartModalOpen] = useState(false);
    
-    
-   
-
     const product = getProductById(params.productId);
     const productsByManufacturer = getProductsByManufacturer(product?.manufacturer, product?.productId);
     console.log(productsByManufacturer.length);
