@@ -13,12 +13,9 @@ type CartModalProps = {
 }
 
 export default function CartModal({isOpen, handleCloseModal}: CartModalProps) {
-    // if(!isOpen) {
-    //     return null;
-    // }
-
+ 
     const [reRender, setReRender] = useState(false);
-    const [isCartEmpty, setIsCartEmpty] = useState(false)
+    const [isCartEmpty, setIsCartEmpty] = useState(false);
     const removeFromCart = (id: string) => {
         const indexToRemove = userCart.findIndex(item => item.productId === id)
         
@@ -28,7 +25,6 @@ export default function CartModal({isOpen, handleCloseModal}: CartModalProps) {
         }
 
         if (userCart.length < 1) {
-            // handleCloseModal();
             setIsCartEmpty(true);
         }
     }
@@ -41,7 +37,6 @@ export default function CartModal({isOpen, handleCloseModal}: CartModalProps) {
             }
         })
         setReRender(!reRender)
-        console.log(userCart)
     }
 
     const renderCartProductCards = () => {
@@ -117,7 +112,7 @@ export default function CartModal({isOpen, handleCloseModal}: CartModalProps) {
                                     <span>Subtotal</span>
                                     <span>{getSubtotalOfItems()} gp</span>
                                 </p>
-                                <Link className="cart_btn__checkout" href="/">Checkout</Link>
+                                <Link className="cart_btn__checkout" onClick={handleCloseModal} href="/shop/cart">Checkout</Link>
                             </div>
                         </div>
                     </div>
