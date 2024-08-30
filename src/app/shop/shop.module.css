@@ -28,10 +28,15 @@
     text-decoration: underline;
 }
 
-.list_item + .list_item::before {
+.list_item::before {
     content: "/";
     margin: 0 5px;
 }
+
+/* .list_item + .list_item::before {
+    content: "/";
+    margin: 0 5px;
+} */
 
 
 

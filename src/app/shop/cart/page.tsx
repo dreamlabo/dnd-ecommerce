@@ -1,10 +1,24 @@
+'use client'
 import style from '@/app/shop/shop.module.css'
+import {userCart} from "../../../fakeData/userData/userData"
 import Image from 'next/image'
 import dagger from '../../assets/images/weapons/dnd-sword-1.jpg'
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 
+import CartPageProductCard from '../components/cartPageComponents/CartPageProductCard';
+
 export default function Cart() {
+    console.log("cart", userCart)
+
+    const renderProducts = () => {
+        return userCart.map(cartItem => {
+           
+            return <CartPageProductCard key={cartItem.productId}/>
+        })
+
+    }
+    
   return (
     <main>
         <div className={style.section_container}>
@@ -28,7 +42,8 @@ export default function Cart() {
                     <div className={style.items__header}>
                         <h2>Items</h2>
                     </div>
-                    <article className={style.cartPage__product_card}>
+                {renderProducts()}
+                    {/* <article className={style.cartPage__product_card}>
                         <div className={style.image_wrapper}>
                             <Image
                             src={dagger}
@@ -62,8 +77,8 @@ export default function Cart() {
                                 </div>
                             </div>
                         </div>
-                    </article>
-                    <article className={style.cartPage__product_card}>
+                    </article> */}
+                    {/* <article className={style.cartPage__product_card}>
                         <div className={style.image_wrapper}>
                             <Image
                             src={dagger}
@@ -98,9 +113,8 @@ export default function Cart() {
                                 </div>
                             </div>
                         </div>
-                    </article>
-                    <article className={style.cartPage__product_card}>
-                        {/* <div className={style.cartPage__product_card__image}> */}
+                    </article> */}
+                    {/* <article className={style.cartPage__product_card}>
                         <div className={style.image_wrapper}>
                             <Image
                             src={dagger}
@@ -134,7 +148,7 @@ export default function Cart() {
                                 </div>
                             </div>
                         </div>
-                    </article>
+                    </article> */}
                 </div>
                 <div className={style.cart_summary__wrapper}>
                     <div className={style.items__header}>
