@@ -2,7 +2,8 @@
 Inspired by my love of Dungeons and Dragons, the Adventure Guild is an eCommerce application that allows users to purchase top-quality gear and weapons, and receive expert advice to ensure their adventuring group is fully prepared for any quest.  
 
   
-![CARS Homepage screenshot](https://raw.githubusercontent.com/dreamlabo/coloradoprog/main/images/cars-homepage-screenshot.png)
+![DnD Homepage screenshot](https://raw.githubusercontent.com/dreamlabo/dnd-ecommerce/main/public/Adventure-guild-landing-page.png)
+
 
 
 ### Why Dungeons and Dragons?
@@ -11,7 +12,9 @@ By choosing Dungeons and Dragons as my theme, I aimed to make the project more e
 
 ### A Few Caveats:
 This is very much a work in progress. While I'm posting the link to the site, please note that this is still a prototype of the store. This version has no database, you can't actually purchase your items, and some buttons are just for show.  
-I'll be updating the site as I have time, with more features and functionality to come.
+I'll be updating the site as I have time, with more features and functionality to come.  
+[The Adventure Guild](https://adventure-guild-store.vercel.app/)
+
 
 
 ## Technologies
